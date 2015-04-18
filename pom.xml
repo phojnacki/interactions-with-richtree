@@ -10,9 +10,6 @@
 
     <properties>
         <jsf.version>2.1.29</jsf.version>
-        <javax.servlet.jsp.jstl.version>1.2.1</javax.servlet.jsp.jstl.version>
-        <javax.servlet.jsp.version>2.2.1</javax.servlet.jsp.version>
-        <javax.servlet.version>3.0.1</javax.servlet.version>
         <org.richfaces.version>4.5.4.Final</org.richfaces.version>
     </properties>
 
