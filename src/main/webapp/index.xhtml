@@ -1,27 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:rich="http://richfaces.org/rich" xmlns:a4j="http://java.sun.com/jsf/html">
+      xmlns:rich="http://richfaces.org/rich" 
+      xmlns:a4j="http://richfaces.org/a4j" 
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:f="http://java.sun.com/jsf/core">
 
-<h:head>
-    <title>Interactions with RichTree</title>
-    <link href="css/styles.css" rel="stylesheet" type="text/css"/>
-</h:head>
+    <h:head>
+        <title>Interactions with RichTree</title>
+        <link href="css/styles.css" rel="stylesheet" type="text/css"/>
+    </h:head>
 
-<h:body>
-    <h2>RichTree component</h2>
-    <h:form>
-        <rich:tree value="#{webTechnologies.rootNodes}" var="station" stateVar="#{webTechnologies.binding}">
-            <rich:treeNode>
-                <h:outputText value="#{station}" />
-            </rich:treeNode>
-        </rich:tree>
-        <a4j:commandButton action="#{webTechnologies.expandAll}" value="Expand all"/>
-    </h:form>
-</h:body>
+    <h:body>
+        <h:panelGrid columns="2" width="80%" columnClasses="tree, browser" >
+            <h:form>
+                <h2>Interactions with RichTree</h2>
+                <div>
+                <a4j:commandButton action="#{webTechnologiesTreeBean.switchContainersExpansion}" 
+                                   render="tree, @this"
+                                   value=" "
+                                   styleClass="#{webTechnologiesTreeBean.containersExpansionCss}"/>
+                <a4j:commandButton action="#{treeNavigator.selectPrevious}" 
+                                   render="tree" 
+                                   value=" "
+                                   styleClass="prevButton"/>
+                <a4j:commandButton action="#{treeNavigator.selectNext}" 
+                                   render="tree, browser" 
+                                   value=" "
+                                   styleClass="nextButton"/>
+                </div>
+                <br/>
+                <rich:tree id="tree"
+                           selectionType="ajax"
+                           value="#{webTechnologiesTreeBean.rootNode}"
+                           var="node" 
+                           selection="#{webTechnologiesTreeBean.selection}"
+                           selectionChangeListener="#{webTechnologiesTreeBean.processTreeSelectionChange}">
+                    <rich:treeNode expanded="#{node.expanded}" iconLeaf="images/mobilne.jpg">
+                        <h:outputText value="#{node.data.name}"/>
+                    </rich:treeNode>
+                </rich:tree>
+            </h:form>
+            <a4j:outputPanel ajaxRendered="true" 
+                             id="browser">
+                <iframe width="640" height="400" style="border:none" src="#{browserBean.url}"/>
+            </a4j:outputPanel>
+        </h:panelGrid>
+    </h:body>
 
 </html>

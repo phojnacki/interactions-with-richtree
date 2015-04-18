@@ -13,26 +13,8 @@
         <javax.servlet.jsp.jstl.version>1.2.1</javax.servlet.jsp.jstl.version>
         <javax.servlet.jsp.version>2.2.1</javax.servlet.jsp.version>
         <javax.servlet.version>3.0.1</javax.servlet.version>
-        <richfaces.version>4.5.2.Final</richfaces.version>
+        <org.richfaces.version>4.5.4.Final</org.richfaces.version>
     </properties>
-
-    <repositories>
-        <repository>
-            <id>jboss-public-repository-group</id>
-            <name>JBoss Public Maven Repository Group</name>
-            <url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
-            <layout>default</layout>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </snapshots>
-        </repository>
-    </repositories>
-
 
     <build>
         <finalName>interactionsWithRichTree</finalName>
@@ -57,10 +39,11 @@
             <version>6.0</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>org.richfaces</groupId>
             <artifactId>richfaces</artifactId>
-            <version>${richfaces.version}</version>
+            <version>${org.richfaces.version}</version>
         </dependency>
         <dependency>
             <groupId>com.sun.faces</groupId>
