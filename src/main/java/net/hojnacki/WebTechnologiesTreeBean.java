@@ -79,7 +79,6 @@ public class WebTechnologiesTreeBean implements Serializable, ITree {
         } else {
             browserBean.setUrl("about:blank");
         }
-        //selection = userSelection;
     }
 
     @Override
