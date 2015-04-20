@@ -19,31 +19,32 @@
         <h:panelGrid columns="2" width="80%" columnClasses="tree, browser" >
             <h:form>
                 <h2>Interactions with RichTree</h2>
-                <div>
-                <a4j:commandButton action="#{webTechnologiesTreeBean.switchContainersExpansion}" 
-                                   render="tree, @this"
-                                   value=" "
-                                   styleClass="#{webTechnologiesTreeBean.containersExpansionCss}"/>
-                <a4j:commandButton action="#{treeNavigator.selectPrevious}" 
-                                   render="tree" 
-                                   value=" "
-                                   styleClass="prevButton"/>
-                <a4j:commandButton action="#{treeNavigator.selectNext}" 
-                                   render="tree, browser" 
-                                   value=" "
-                                   styleClass="nextButton"/>
+                <div id="navButtons">
+                    <a4j:commandButton action="#{webTechnologiesTreeBean.switchContainersExpansion}" 
+                                       render="tree, @this"
+                                       value=" "
+                                       styleClass="#{webTechnologiesTreeBean.containersExpansionCss}"/>
+                    <a4j:commandButton action="#{treeNavigator.selectPrevious}" 
+                                       render="tree" 
+                                       value=" "
+                                       styleClass="prevButton"/>
+                    <a4j:commandButton action="#{treeNavigator.selectNext}" 
+                                       render="tree, browser" 
+                                       value=" "
+                                       styleClass="nextButton"/>
+                </div><br/>
+                <div id="aTree">
+                    <rich:tree id="tree"
+                               selectionType="ajax"
+                               value="#{webTechnologiesTreeBean.rootNode}"
+                               var="node" 
+                               selection="#{webTechnologiesTreeBean.selection}"
+                               selectionChangeListener="#{webTechnologiesTreeBean.processTreeSelectionChange}">
+                        <rich:treeNode expanded="#{node.expanded}" iconLeaf="images/mobilne.jpg">
+                            <h:outputText value="#{node.data.name}"/>
+                        </rich:treeNode>
+                    </rich:tree>
                 </div>
-                <br/>
-                <rich:tree id="tree"
-                           selectionType="ajax"
-                           value="#{webTechnologiesTreeBean.rootNode}"
-                           var="node" 
-                           selection="#{webTechnologiesTreeBean.selection}"
-                           selectionChangeListener="#{webTechnologiesTreeBean.processTreeSelectionChange}">
-                    <rich:treeNode expanded="#{node.expanded}" iconLeaf="images/mobilne.jpg">
-                        <h:outputText value="#{node.data.name}"/>
-                    </rich:treeNode>
-                </rich:tree>
             </h:form>
             <a4j:outputPanel ajaxRendered="true" 
                              id="browser">

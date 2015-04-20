@@ -13,6 +13,7 @@ import java.util.Collection;
 import java.util.List;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import org.richfaces.component.UITree;
 
 @ManagedBean
 @SessionScoped

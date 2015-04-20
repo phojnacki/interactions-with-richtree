@@ -86,3 +86,5 @@ form input[type="submit"] {
     height: 66px !important;
     width: 66px !important;
 }
+
+#aTree, #navButtons { display: inline-block; }

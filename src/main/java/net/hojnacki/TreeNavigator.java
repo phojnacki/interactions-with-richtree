@@ -7,7 +7,9 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import org.richfaces.component.UITree;
 import org.richfaces.model.SequenceRowKey;
+import org.richfaces.model.TreeNode;
 
 
 @ManagedBean
@@ -83,7 +85,5 @@ public class TreeNavigator {
     public void setTreeBean(ITree treeBean) {
         this.treeBean = treeBean;
     }
-    
-    
     
 }
